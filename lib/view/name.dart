@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loan_app_01/controller/home_controller.dart';
 import 'package:loan_app_01/main.dart';
-import 'package:loan_app_01/view/bottembar.dart';
+import 'package:loan_app_01/view/bottombar.dart';
+
 import 'package:sizer/sizer.dart';
 
 
