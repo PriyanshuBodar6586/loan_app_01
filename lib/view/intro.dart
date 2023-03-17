@@ -1,7 +1,7 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loan_app_01/view/home_screen.dart';
+import 'package:loan_app_01/view/name.dart';
 import 'package:sizer/sizer.dart';
 
 final pages = [
@@ -51,7 +51,7 @@ class Intro extends StatelessWidget {
          opacityFactor: 2.0,
          scaleFactor: 0.2,
         onFinish: (){
-          Get.offAll(Home_Screen());
+          Get.offAll(Name_screen());
         },
 
 
