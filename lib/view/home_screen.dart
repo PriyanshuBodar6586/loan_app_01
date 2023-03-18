@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:loan_app_01/const/constant.dart';
 import 'package:loan_app_01/controller/home_controller.dart';
 import 'package:loan_app_01/main.dart';
+import 'package:loan_app_01/view/calculator.dart';
 import 'package:sizer/sizer.dart';
 
 class Home_Screen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFFEFEFE),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.normal),
         padding: EdgeInsets.only(left: 16, top: 54, right: 16),
@@ -39,7 +40,7 @@ class _Home_ScreenState extends State<Home_Screen> {
             _introCard(),
             Text('Features',
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold)),
             SizedBox(height: 12),
@@ -65,10 +66,18 @@ class _Home_ScreenState extends State<Home_Screen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                _menuItem(() { controller.select.value = 3;}, 'My\nvouchers', FontAwesomeIcons.gift, redGradient),
+                _menuItem(() {Get.to(Calculator());}, 'My\nCalculator', FontAwesomeIcons.calculator, redGradient),
                 _menuItem(
-                        () {}, 'Phone\ncard', FontAwesomeIcons.phoneAlt, purpleGradient),
+                        () {}, 'Phone\ncard', FontAwesomeIcons.phone, purpleGradient),
               ],
+            ),
+            SizedBox(
+              height: 1.h,
+            ),
+            Container(
+              height: 25.h,
+              width: 100.w,
+              color: Colors.white,
             ),
 
           ],
@@ -82,20 +91,23 @@ class _Home_ScreenState extends State<Home_Screen> {
   _menuItem(void Function() onTap, String title, IconData iconData,
       LinearGradient gradient) {
     return InkWell(
+      borderRadius: BorderRadius.circular(13),
       onTap: onTap,
       child: Container(
         height: 30.h,
-        width: 40.w,
+        width: 43.w,
         margin: EdgeInsets.all(4),
         padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.white10,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
-              spreadRadius: 2,
-              blurRadius: 2,
+              color: Colors.white,
+              offset: Offset(0, 0),
+              blurRadius: 4,
+              blurStyle: BlurStyle.outer
+              //spreadRadius: 2,
             ),
           ],
         ),
@@ -119,7 +131,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               style: TextStyle(
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w500,
-                color: Colors.black87,
+                color: Colors.white,
               ),
               textAlign: TextAlign.center,
             )
@@ -138,7 +150,7 @@ class _Home_ScreenState extends State<Home_Screen> {
       decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.circular(12),
-          image: DecorationImage(
+          image: const DecorationImage(
             image: AssetImage('assets/image/bg.jpg'),
             fit: BoxFit.fill,
           ),
@@ -202,7 +214,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         Text(
           'Hello !',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 24,
             fontWeight: FontWeight.w600,
           ),
@@ -211,7 +223,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         Text(
           mStrName,
           style: TextStyle(
-            color: Colors.grey[600],
+            color: Colors.grey[400],
             fontSize: 16,
             fontWeight: FontWeight.w400,
           ),
@@ -228,7 +240,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         IconButton(
           onPressed: () {},
           icon: Icon(FontAwesomeIcons.bell,
-              size: 24, color: Colors.blueGrey[700]),
+              size: 24, color: Colors.white),
         )
       ],
     );
