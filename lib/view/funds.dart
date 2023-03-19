@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loan_app_01/view/funds%20guid/Benifit.dart';
+import 'package:loan_app_01/view/funds%20guid/elss.dart';
 import 'package:loan_app_01/view/funds%20guid/fund_sip.dart';
+import 'package:loan_app_01/view/funds%20guid/growth.dart';
+import 'package:loan_app_01/view/funds%20guid/lumpsum.dart';
 import 'package:loan_app_01/view/funds%20guid/sip.dart';
+import 'package:loan_app_01/view/funds%20guid/stp.dart';
+import 'package:loan_app_01/view/funds%20guid/tips.dart';
+import 'package:loan_app_01/view/funds%20guid/type.dart';
+import 'package:loan_app_01/view/funds%20guid/what.dart';
 import 'package:loan_app_01/view/funds%20guid/what01.dart';
 import 'package:sizer/sizer.dart';
 
@@ -101,18 +109,15 @@ class _FundState extends State<Fund> {
                 ),
                 Selecte((){ Get.to(Sip());},"What is sip?"),
                 Selecte((){ Get.to(Fund_sip());},"Matual fund vs sip"),
-                Selecte((){ Get.to(Sip());},"Benefits of investing in SIP"),
-                Selecte((){ Get.to(Sip());},"Type of mutual fund"),
-                Selecte((){ Get.to(Sip());},"ELSS (Tax Saver)"),
-                Selecte((){ Get.to(Sip());},"Tips to choose fund"),
-                Selecte((){ Get.to(Sip());},"What is NAV?"),
-                Selecte((){ Get.to(Sip());},"Lumpsum Vs SIP"),
-                Selecte((){ Get.to(Sip());},"SIP Vs STP Vs SWP"),
-                Selecte((){ Get.to(Sip());},"Growth Plan Vs Divident Plan"),
-                Selecte((){ Get.to(Sip());},"Direct Vs Regular"),
-                Selecte((){ Get.to(Sip());},"How to invest in MF?"),
-                Selecte((){ Get.to(Sip());},"Disadvantages of MF"),
-                Selecte((){ Get.to(Sip());},"Frequently Asked Questions"),
+                Selecte((){ Get.to(Benifit());},"Benefits of investing in SIP"),
+                Selecte((){ Get.to(Types());},"Type of mutual fund"),
+                Selecte((){ Get.to(Elss());},"ELSS (Tax Saver)"),
+                Selecte((){ Get.to(Tips());},"Tips to choose fund"),
+                Selecte((){ Get.to(What());},"What is NAV?"),
+                Selecte((){ Get.to(Lumpsum());},"Lumpsum Vs SIP"),
+                Selecte((){ Get.to(STP());},"SIP Vs STP Vs SWP"),
+                Selecte((){ Get.to(Growth());},"Growth Plan Vs Divident Plan"),
+
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
