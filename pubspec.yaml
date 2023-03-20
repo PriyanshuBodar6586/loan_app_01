@@ -45,6 +45,11 @@ dependencies:
   auto_size_text: ^3.0.0
   bubbled_navigation_bar: ^0.0.4
   vertical_card_pager: ^1.5.0
+  internet_connection_checker:
+  connectivity_plus:
+
+
+
 
 
 

@@ -1,50 +1,164 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:loan_app_01/view/intro.dart';
+
+
 import 'package:sizer/sizer.dart';
 
-class Splash_screen extends StatefulWidget {
-  const Splash_screen({Key? key}) : super(key: key);
+
+
+
+class splash_screen extends StatefulWidget {
+  const splash_screen({Key? key}) : super(key: key);
 
   @override
-  State<Splash_screen> createState() => _Splash_screenState();
+  State<splash_screen> createState() => _splash_screenState();
 }
 
-class _Splash_screenState extends State<Splash_screen> {
+class _splash_screenState extends State<splash_screen> {
+  late StreamSubscription subscription;
+  ValueNotifier<bool> isDeviceConnected = ValueNotifier(false);
+  ValueNotifier<bool> isAlertSet = ValueNotifier(false);
+
+  @override
+  void initState() {
+    getConnectivity();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      body: Align(
+      backgroundColor: Color(0xff000B36),
+      body: Stack(
         alignment: Alignment.bottomCenter,
-        child: InkWell(
-          onTap: (){
-            Get.off(Intro());
-          },
-          child: Container(
-            height: 10.h,
-            width: 95.w,
-            child: Center(child: Text("Start", style: TextStyle(color: Colors.white,fontSize: 20.sp))),
-            decoration: BoxDecoration(
-                color: Colors.grey[900],
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black,
-                    offset: Offset(4, 4),
-                    blurRadius: 15,
-                    spreadRadius: 5,
-                  ),
-                  BoxShadow(
-                      color: Colors.grey.shade700,
-                      offset: Offset(-4, -4),
-                      blurRadius: 15,
-                      spreadRadius: 1),
-                ]),
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/image/logo.png",),
+            ],
           ),
-        ),
+          InkWell(
+            borderRadius: BorderRadius.circular(30),
+            onTap: () {
+              if (isDeviceConnected.value == false) {
+                dialog();
+              } else {
+                Get.to(Intro());
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                height: 8.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                  border:Border.all(color: Colors.white,width: 2)
+
+                ),
+                child: Center(
+                  child: Text("Get Started",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 25.sp,
+                      )),
+                ),
+              ),
+            ),
+          ),
+
+        ],
       ),
     );
   }
+
+  getConnectivity() {
+    subscription = Connectivity().onConnectivityChanged.listen(
+          (ConnectivityResult result) async {
+        isDeviceConnected.value =
+        (await InternetConnectionChecker().hasConnection);
+        if (isDeviceConnected.value == false && isAlertSet.value == false) {
+          dialog();
+          isAlertSet.value = true;
+        } else {
+          // openAds();
+
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
+
+  dialog() => Get.defaultDialog(
+    barrierDismissible: false,
+    backgroundColor: const Color(0xFFffffff),
+    title: "No Internet",
+    titleStyle: const TextStyle(color: Colors.black),
+    actions: [
+      ElevatedButton(
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all(const StadiumBorder()),
+            backgroundColor:
+            MaterialStateProperty.all(const Color(0xFFFFFFFF))),
+        onPressed: () async {
+          Get.back();
+          isAlertSet.value = false;
+          isDeviceConnected.value =
+          await InternetConnectionChecker().hasConnection;
+          if (!isDeviceConnected.value) {
+            dialog();
+            isAlertSet.value = true;
+          }
+        },
+        child: const Text(
+          "Retry",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    ],
+    content: SizedBox(
+      height: 30.h,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              SizedBox(
+                height: 70,
+                width: 70,
+                child: Image.asset('assets/image/internet.png'),
+              ),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.all(10),
+                  child: Text(
+                    "Check Your Data Connection \n Connect Internet & Try Again...",
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
 }

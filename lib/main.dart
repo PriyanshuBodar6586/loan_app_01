@@ -24,7 +24,7 @@ void main() async {
               debugShowCheckedModeBanner: false,
 
               routes: {
-                '/': (contest) => Splash_screen(),
+                '/': (contest) => splash_screen(),
               },
             );
           },
