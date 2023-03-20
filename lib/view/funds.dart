@@ -140,7 +140,8 @@ class _FundState extends State<Fund> {
     return   Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: (){},
+        onTap: (){
+        },
         child: Container(
           height: 8.h,
           width: 100.w,

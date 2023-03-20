@@ -132,8 +132,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     },
                     child: Icon(
                         currentIndex == 1
-                            ? Icons.explore
-                            : Icons.explore_outlined,
+                            ? Icons.attach_money
+                            : Icons.attach_money_outlined,
                         size: 28.sp),
                   ),
                   InkWell(
@@ -144,8 +144,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     },
                     child: Icon(
                         currentIndex == 2
-                            ? Icons.favorite
-                            : Icons.favorite_outline,
+                            ? Icons.insert_page_break
+                            : Icons.insert_page_break_outlined,
                         size: 28.sp),
                   ),
                   InkWell(
@@ -155,7 +155,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                       });
                     },
                     child: Icon(
-                        currentIndex == 3 ? Icons.person : Icons.person_outline,
+                        currentIndex == 3 ? Icons.calculate : Icons.calculate_outlined,
                         size: 28.sp),
                   ),
                 ],

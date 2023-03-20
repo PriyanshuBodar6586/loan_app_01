@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:loan_app_01/const/constant.dart';
 import 'package:loan_app_01/controller/home_controller.dart';
 import 'package:loan_app_01/main.dart';
+
 import 'package:loan_app_01/view/calculator.dart';
 import 'package:sizer/sizer.dart';
 
@@ -33,7 +34,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 _greetings(),
-                _trailingIcons(),
+
               ],
             ),
             SizedBox(height: 24),
@@ -68,7 +69,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               children: <Widget>[
                 _menuItem(() {Get.to(Calculator());}, 'My\nCalculator', FontAwesomeIcons.calculator, redGradient),
                 _menuItem(
-                        () {}, 'Phone\ncard', FontAwesomeIcons.phone, purpleGradient),
+                        () {}, 'All\nCalculators', FontAwesomeIcons.calculator, purpleGradient),
               ],
             ),
             SizedBox(
@@ -189,7 +190,7 @@ class _Home_ScreenState extends State<Home_Screen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Explore',
+                'Explore App',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -197,8 +198,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                 ),
               ),
               SizedBox(width: 8),
-              Icon(FontAwesomeIcons.longArrowAltRight,
-                  size: 36, color: Colors.white),
+
             ],
           )
         ],
@@ -232,17 +232,4 @@ class _Home_ScreenState extends State<Home_Screen> {
     );
   }
 
-  _trailingIcons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        IconButton(
-          onPressed: () {},
-          icon: Icon(FontAwesomeIcons.bell,
-              size: 24, color: Colors.white),
-        )
-      ],
-    );
-  }
 }
